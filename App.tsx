@@ -3,10 +3,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import KitapListesi from './src/KitapListesi';
 import KitapDetay from './src/KitapDetay';
+import KitapPdf from './KitapPdf';
+
 
 export type RootStackParamList = {
   KitapListesi: undefined;
   KitapDetay: { kitapId: number };
+  KitapPdf: { pdfUrl: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -24,6 +27,11 @@ const App: React.FC = () => {
           name="KitapDetay"
           component={KitapDetay}
           options={{ title: '📖 Kitap Detay' }}
+        />
+        <Stack.Screen
+          name="KitapPdf"
+          component={KitapPdf}
+          options={{ title: 'PDF Okuma' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

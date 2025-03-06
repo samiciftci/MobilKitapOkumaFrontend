@@ -11,7 +11,6 @@ interface Kitap {
   ad: string;
   yazar: string;
   puan: number;
-  // Diğer alanlar da eklenebilir...
 }
 
 interface KitapListesiProps {
@@ -29,13 +28,17 @@ const KitapListesi: React.FC<KitapListesiProps> = ({ navigation }) => {
         setLoading(false);
       })
       .catch(error => {
-        console.error("Kitapları alırken hata oluştu:", error);
+        console.error('Kitapları alırken hata oluştu:', error);
         setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return <ActivityIndicator size="large" color="#3b5998" style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} />;
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#3b5998" />
+      </View>
+    );
   }
 
   return (
