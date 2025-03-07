@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, Alert } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
 
@@ -28,10 +28,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <Button
           title="Arama"
-          onPress={() => {
-            // Burada henüz bir "Arama" ekranı yoksa, ileride ekleyebilirsiniz.
-            // Örneğin navigation.navigate('AramaEkrani');
-          }}
+          onPress={() => navigation.navigate('Search')}
         />
       </View>
     </View>

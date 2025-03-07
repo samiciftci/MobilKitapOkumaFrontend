@@ -6,13 +6,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/HomeScreen';
 import KitapListesi from './src/KitapListesi';
 import KitapDetay from './src/KitapDetay';
+import SearchScreen from './src/SearchScreen'; // <-- Arama ekranını import edin
 
-// Kök dizinde olanlar
+// Kök dizinde yer alan ekranlar
 import KitapPdf from './KitapPdf';
 import LoginScreen from './LoginScreen';
 import RegisterScreen from './RegisterScreen';
 
-// RootStackParamList: Ekranların parametre tanımları
+// Navigasyon ekran parametre tanımları
 export type RootStackParamList = {
   Home: undefined;
   Login: undefined;
@@ -20,23 +21,23 @@ export type RootStackParamList = {
   KitapListesi: undefined;
   KitapDetay: { kitapId: number };
   KitapPdf: { pdfUrl: string };
+  Search: undefined; // <-- Arama ekranı için ekledik
 };
 
-// Stack oluşturma
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        {/* Ana sayfa */}
+        {/* Ana Sayfa */}
         <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{ title: 'Ana Sayfa' }}
         />
 
-        {/* Login ve Register ekranları */}
+        {/* Kullanıcı Girişi ve Kayıt */}
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -48,7 +49,7 @@ const App: React.FC = () => {
           options={{ title: 'Kayıt Ol' }}
         />
 
-        {/* Kitap ekranları */}
+        {/* Kitap ile ilgili ekranlar */}
         <Stack.Screen
           name="KitapListesi"
           component={KitapListesi}
@@ -63,6 +64,13 @@ const App: React.FC = () => {
           name="KitapPdf"
           component={KitapPdf}
           options={{ title: 'PDF Okuma' }}
+        />
+
+        {/* Arama ekranı */}
+        <Stack.Screen
+          name="Search"
+          component={SearchScreen}
+          options={{ title: 'Kitap Arama' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
